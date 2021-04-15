@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CACC Website</title>
+
+	<link rel="stylesheet" type="text/css"
+	href="{{ url_for('static', filename='css/styles.css') }}">
+
+	<script src="{{ url_for('static', filename='js/jquery-3.5.1.min.js') }}">
+	</script>
+
+	<script src="{{ url_for('static', filename='js/socket.io.js') }}">
+	</script>
+
+	<link rel="icon"
+		href="{{ url_for('static', filename='im/homer.png') }}">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+ 				 <body style="background-color:gray;">
+
+					 <div class="header" id="cacc_header">
+  				 		<h2>Computers Are Complicated Club = CACC </h2>
+				 	 </div>
+
+					 <div class="btn-group">
+
+					<div id ="location_selection">
+						<button id="location" class ="button" onclick="get_loc()">Select Location</button>
+					</div>
+
+					<div id="list_locations">
+        		<button id="list" class ="button" onclick="list_locs()">List Locations</button>
+					</div>
+
+					<p id="test" class = "text_center"></p>
+
+					<p id="print_locations"></p>
+
+					
+					</div>
+
+	<script>
+		 var socket =  io.connect(location.origin);
+
+		 function get_loc(){
+			 socket.emit("keyword");
+		 }
+
+		 socket.on("venue", function (data) {
+			 document.getElementById("test").innerHTML = data.location;
+		 });
+
+     function list_locs(){
+			 socket.emit("list_keyword");
+		 }
+
+		 socket.on("db_list", function(data) {
+			 document.getElementById("print_locations").innerHTML = data.list;
+		 });
+
+	</script>
+</body>
+</html>

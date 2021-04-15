@@ -1,0 +1,55 @@
+.body {margin:0;}
+.place-items: center;
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.text_center{
+ color: black;
+ text-align: center;
+}
+
+.header {
+ padding: 10px 16px;
+ background: black;
+ color: white;
+}
+
+.content {
+ padding: 16px;
+}
+
+.sticky {
+ position: fixed;
+ top: 0;
+ width: 100%
+}
+
+.sticky + .content {
+ padding-top: 102px;
+}
+
+.btn-group .button {
+  background-color: #4CAF50; /* Green */
+  border: 1px solid green;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+  width: 150px;
+  display: block;
+}
+
+.btn-group .button:not(:last-child) {
+  border-bottom: none; /* Prevent double borders */
+}
+
+.btn-group .button:hover {
+  background-color: #3e8e41;
+}
